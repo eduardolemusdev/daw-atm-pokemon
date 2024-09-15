@@ -1,4 +1,5 @@
 const tabButtons = document.querySelectorAll("button[bank-operation]");
+
 class Currency {
   amountInCents = 0;
   constructor(amount) {
@@ -36,17 +37,44 @@ class Currency {
 const TRANSACTIONS_TYPES = {
   DEPOSIT: "DEPOSIT",
   WITHDRAW: "WITHDRAW",
+
+  WATER_SERVICE: "WATER_SERVICE",
+  INTERNET_SERVICE: "INTERNET_SERVICE",
+  ENERGY_SERVICE: "ENERGY_SERVICE",
+  PHONE_SERVICE: "PHONE_SERVICE",
 };
+
 class ATM {
+  #accountsLocalStorageKey = "ACCOUNTS";
+
+  registerAccount(accountID) {
+    this.#validateAccountsKeyLocalStorageExist();
+    const accountsFromLocalStorage = localStorage.getItem(
+      this.#accountsLocalStorageKey
+    );
+
+    const accounts = JSON.parse(accountsFromLocalStorage);
+
+    const newAccount = {
+      accountID,
+      transacctions: [],
+    };
+
+    localStorage.setItem(
+      this.#accountsLocalStorageKey,
+      JSON.stringify([...accounts, newAccount])
+    );
+  }
+
   addTransaction(accountID, amount, transactionType) {
-    let accountsFromLocalStorage = localStorage.getItem("accounts");
-    const existAccounts = !!accountsFromLocalStorage;
+    this.#validateAccountsKeyLocalStorageExist();
+
+    const accountsFromLocalStorage = localStorage.getItem(
+      this.#accountsLocalStorageKey
+    );
+
     const newAmmount = new Currency(amount);
 
-    if (!existAccounts) {
-      localStorage.setItem("accounts", JSON.stringify([]));
-      accountsFromLocalStorage = localStorage.getItem("accounts");
-    }
     const accounts = JSON.parse(accountsFromLocalStorage);
 
     const accountToStartTransacction = accounts.find(
@@ -56,29 +84,6 @@ class ATM {
     const restAccounts = accounts.filter(
       (account) => account.accountID !== accountID
     );
-
-    const isFirstAccountTransacction = !accountToStartTransacction;
-
-    if (isFirstAccountTransacction) {
-      localStorage.setItem(
-        "accounts",
-        JSON.stringify([
-          ...restAccounts,
-          {
-            accountID,
-            transacctions: [
-              {
-                date: new Date().toLocaleString(),
-                amount: newAmmount.getAmountCents(),
-                transactionType,
-              },
-            ],
-          },
-        ])
-      );
-
-      return;
-    }
 
     accountToStartTransacction.transacctions = [
       ...accountToStartTransacction.transacctions,
@@ -90,13 +95,25 @@ class ATM {
     ];
 
     localStorage.setItem(
-      "accounts",
+      this.#accountsLocalStorageKey,
       JSON.stringify([...restAccounts, accountToStartTransacction])
     );
+  }
+
+  #validateAccountsKeyLocalStorageExist() {
+    const accountsFromLocalStorage = localStorage.getItem(
+      this.#accountsLocalStorageKey
+    );
+    const existAccounts = !!accountsFromLocalStorage;
+
+    if (!existAccounts) {
+      localStorage.setItem(this.#accountsLocalStorageKey, JSON.stringify([]));
+    }
   }
 }
 
 const atm = new ATM();
+
 tabButtons.forEach((tabButton) => {
   tabButton.addEventListener("click", (e) => {
     const currentOperation = tabButton.getAttribute("bank-operation");
