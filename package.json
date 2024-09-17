@@ -1,0 +1,25 @@
+{
+  "name": "daw-atm-pokemon",
+  "version": "1.0.0",
+  "description": "atm con la tematica de pokemon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardolemusdev/pokemon-bank-atm.git"
+  },
+  "keywords": [
+    "atm"
+  ],
+  "author": "eduardo lemus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardolemusdev/pokemon-bank-atm/issues"
+  },
+  "homepage": "https://github.com/eduardolemusdev/pokemon-bank-atm#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.11"
+  }
+}

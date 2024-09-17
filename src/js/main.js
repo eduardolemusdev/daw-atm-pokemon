@@ -136,6 +136,7 @@ tabButtons.forEach((tabButton) => {
     }
 
     if (currentOperation === "deposit") {
+      atm.registerAccount("AB");
       atm.addTransaction("AB", "1,000.21", TRANSACTIONS_TYPES.DEPOSIT);
     }
     tabContent.classList.remove("tabcontent");
