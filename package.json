@@ -21,5 +21,8 @@
   "homepage": "https://github.com/eduardolemusdev/pokemon-bank-atm#readme",
   "devDependencies": {
     "tailwindcss": "^3.4.11"
+  },
+  "dependencies": {
+    "daw-atm-pokemon": "file:"
   }
 }
