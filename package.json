@@ -23,6 +23,7 @@
     "tailwindcss": "^3.4.11"
   },
   "dependencies": {
-    "daw-atm-pokemon": "file:"
+    "daw-atm-pokemon": "file:",
+    "sweetalert2": "^11.14.1"
   }
 }

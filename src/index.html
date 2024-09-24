@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATM-001</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/ATM.js"></script>
+    <script src="./js/signinService.js" defer></script>
     <script src="./js/main.js" defer></script>
     <link rel="stylesheet" href="./css/mintailwind.css" />
     <link rel="stylesheet" href="./css/main.css" />
@@ -43,10 +47,11 @@
 
       <!-- Signin footer -->
       <div
-        class="flex justify-between items-center w-full h-32 bg-emerald-500 pl-28"
+        class="flex justify-between items-center w-full h-32 bg-emerald-400 pl-28"
       >
         <button
           class="flex justify-around items-center bg-[#306274] hover:bg-[#3b6878] font-bold py-2 px-4 rounded-lg w-96"
+          id="getPIN"
         >
           <img src="/src/imgs/bulbasaur.png" alt="bulbasaur" />
           <span class="text-white text-3xl">Ingresar PIN</span>
