@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <button
+          bank-operation="deposit"
+          class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        >
+          <label for="tab-1">Deposit</label></button
+        ><button
+          bank-operation="withdraw"
+          class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        >
+          <label for="tab-2">WithDraw</label></button
+        ><button bank-operation="list-transactions">
+          <label for="tab-3">Transaccions</label>
+        </button>
+        <button bank-operation="account-status">
+          <label for="tab-3">Status</label>
+        </button>
+      </div>
+
+      <div class="bank-content">
+        <div id="deposit" class="tabcontent">
+          <h1>Deposit</h1>
+        </div>
+        <div id="withdraw" class="tabcontent">
+          <h1>WithDraw</h1>
+        </div>
+        <div id="list-transactions" class="tabcontent">
+          <h1>Transaccions</h1>
+        </div>
+        <div id="account-status" class="tabcontent">
+          <h1>Estatus de cuenta</h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
