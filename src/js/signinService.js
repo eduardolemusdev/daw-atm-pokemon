@@ -48,6 +48,7 @@ signinButton.addEventListener("click", async () => {
       swalInputAccount.focus();
     },
   });
+  const [account, pin] = value;
 
   const invalidInputs = account.length < 10 || pin.length < 4;
   if (invalidInputs) {
@@ -60,7 +61,6 @@ signinButton.addEventListener("click", async () => {
     return;
   }
 
-  const [account, pin] = value;
   const userExist = userDatabaseSimulation(account, pin);
 
   if (!userExist) {
@@ -78,5 +78,11 @@ signinButton.addEventListener("click", async () => {
     timer: 4000,
     icon: "success",
   });
+
   //Redireccionar a pagina principal
+  onSuccessSignin();
 });
+
+const onSuccessSignin = () => {
+  window.location.href = "/src/atm-screens/atm-menu.html";
+};
