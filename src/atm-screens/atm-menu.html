@@ -25,44 +25,46 @@
       </div>
     </div>
     <!-- ATM ACTIONS -->
-    <section class="flex w-full h-screen bg-[#E7F2F2]">
-      <div class="flex justify-center gap-6 w-full h-fit pt-20 pb-12">
+    <section class="flex flex-col items-center w-full py-12 bg-[#E7F2F2]" id="atmContent">
+      <div class="flex justify-center gap-6 w-full h-fit  pb-12">
         <button bank-operation="deposit"
-          class="bg-button hover:bg-teal-500 text-4xl text-white font-bold p-10 rounded-l-full cursor-pointer">
+          class="bg-pokemon-theme hover:bg-teal-500 text-4xl text-white font-bold p-10 rounded-l-full cursor-pointer">
           Depositar
         </button>
         <button bank-operation="withdraw"
-          class="bg-button text-4xl text-white font-bold p-10 rounded-md cursor-pointer">
+          class="bg-pokemon-theme text-4xl text-white font-bold p-10 rounded-md cursor-pointer">
           Transferir
         </button>
         <button bank-operation="list-transactions"
-          class="bg-button text-4xl text-white font-bold p-10 rounded-md cursor-pointer">
+          class="bg-pokemon-theme text-4xl text-white font-bold p-10 rounded-md cursor-pointer">
           Transaccions
         </button>
         <button bank-operation="account-status"
-          class="bg-button text-4xl text-white font-bold p-10 rounded-r-2xl cursor-pointer">
+          class="bg-pokemon-theme text-4xl text-white font-bold p-10 rounded-r-2xl cursor-pointer">
           +
         </button>
       </div>
 
-      <div class="bank-content">
-        <div id="deposit" class="tabcontent">
-          <h1>Deposit</h1>
+      <div class="flex flex-col gap-y-4 bg-pokemon-theme rounded-xl w-[620px] p-12">
+        <div>
+          <span id="accountID" class="underline text-white text-xl font-semibold">Cuenta de ahorros 1234567890</span>
         </div>
-        <div id="withdraw" class="tabcontent">
-          <h1>WithDraw</h1>
+        <div>
+          <span id="balanceAmount" class="text-white text-2xl font-bold">Balance: $765.44</span>
         </div>
-        <div id="list-transactions" class="tabcontent">
-          <h1>Transaccions</h1>
-        </div>
-        <div id="account-status" class="tabcontent">
-          <h1>Estatus de cuenta</h1>
+        <div>
+          <div>
+            <span id="lastTransaction" class="text-[#0BFF06] text-2xl font-bold">+ $165.89</span>
+          </div>
+          <div>
+            <span id="beforeLastTransaction" class="text-orange-300 text-xl font-bold">- $15.23</span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Signin footer -->
-    <div class="flex justify-center items-center w-full h-32 bg-emerald-400 pl-28">
+    <div class="flex justify-center items-center w-full h-32 bg-emerald-400">
       <button class="flex justify-around items-center bg-red-500 hover:bg-red-500 font-bold py-2 px-4 rounded-lg w-96"
         id="getPIN">
         <img src="/src/imgs/bulbasaur.png" alt="bulbasaur" />

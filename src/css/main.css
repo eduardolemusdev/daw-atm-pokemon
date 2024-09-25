@@ -14,7 +14,7 @@
   clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 95% 100%);
 }
 
-.bg-button {
+.bg-pokemon-theme {
   background: rgb(81, 153, 153);
   background: radial-gradient(
     circle,
