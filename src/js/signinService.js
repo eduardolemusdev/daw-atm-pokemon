@@ -73,7 +73,7 @@ signinButton.addEventListener("click", async () => {
     return;
   }
 
-  Swal.fire({
+  await Swal.fire({
     title: `Bienvenido, ${userExist.name.toUpperCase()}`,
     timer: 4000,
     icon: "success",
@@ -84,5 +84,5 @@ signinButton.addEventListener("click", async () => {
 });
 
 const onSuccessSignin = () => {
-  window.location.href = "/src/atm-screens/atm-menu.html";
+  window.location.href = "/src/atm/atm-menu.html";
 };
