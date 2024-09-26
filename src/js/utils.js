@@ -8,3 +8,7 @@ const redirectTomeAtmMenu = () => {
 const redirectTomeAccountTransacctions = () => {
   window.location.href = "/src/atm/account-transactions.html";
 };
+
+const redirectToAccountStats = () => {
+  window.location.href = "/src/atm/account-stats.html";
+};

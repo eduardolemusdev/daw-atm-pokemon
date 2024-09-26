@@ -1,7 +1,10 @@
 const listTransactionsButton = $('button[bank-operation="list-transactions"]');
-
-console.log(listTransactionsButton);
+const showChartsButton = $('[bank-operation="charts"]');
 
 listTransactionsButton.addEventListener("click", () => {
-  window.location.href = "/src/atm/account-transactions.html";
+  redirectTomeAccountTransacctions();
+});
+
+showChartsButton.addEventListener("click", () => {
+  redirectToAccountStats();
 });
