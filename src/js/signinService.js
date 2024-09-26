@@ -80,9 +80,5 @@ signinButton.addEventListener("click", async () => {
   });
 
   //Redireccionar a pagina principal
-  onSuccessSignin();
+  redirectTomeAtmMenu();
 });
-
-const onSuccessSignin = () => {
-  window.location.href = "/src/atm/atm-menu.html";
-};
