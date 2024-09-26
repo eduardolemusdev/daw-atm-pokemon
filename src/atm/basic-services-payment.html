@@ -13,7 +13,6 @@
     <script src="../js/services/basicPaymentsServices.js" defer></script>
     <link rel="stylesheet" href="../css/mintailwind.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/account-transactions-style.css">
 </head>
 
 <body>
@@ -27,19 +26,28 @@
                 <h1 class="font-bold text-5xl">ATM-001</h1>
             </div>
         </div>
-        <!-- ATM ACTIONS -->
-        <section class="flex flex-col w-full  h-[720px] bg-[#E7F2F2] px-28" id="atmContent">
-
-            <!-- DateRanges Section -->
-            <h1 class="font-bold text-4xl">Pago de Facturas</h1>
 
     </div>
 
+    <!-- ATM ACTIONS -->
+    <section class="flex flex-col items-center justify-center w-full  h-[720px] bg-[#E7F2F2] px-12 py-12"
+        id="atmContent">
 
+        <!-- DateRanges Section -->
+        <h1 class="font-semibold text-5xl" id="paymentsTitle"></h1>
+        <div class="py-12">
+            <div class="flex flex-col gap-4 text-6xl">
+                <span class="font-semibold">Ingresar NPE: </span>
+                <input type="text" class="p-4 rounded-lg" placeholder="00000-000-00000-00000">
+            </div>
+            <div class="text-7xl pt-8">
+                <button type="button" class="w-full bg-black/80 text-white p-4 rounded-lg">CONFIRMAR</button>
+            </div>
+        </div>
     </section>
 
-    <!-- Signin footer -->
-    <div class="flex justify-center items-center gap-x-4 w-full h-32 bg-emerald-400">
+    <!-- footer -->
+    <div class="flex px-20 items-center gap-x-4 w-full h-32 bg-emerald-400">
         <button class="flex items-center gap-x-4 bg-[#306274] hover:bg-[#306274] font-bold p-7 rounded-lg"
             id="redirectAtmMenuBtn">
             <span class="text-white text-3xl">Regresar</span>
@@ -48,7 +56,6 @@
             id="getPIN">
             <span class="text-white text-3xl">Cerrar Sesión</span>
         </button>
-    </div>
     </div>
 </body>
 
