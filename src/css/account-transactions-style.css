@@ -1,0 +1,12 @@
+th,
+td {
+  border-bottom: 1px solid grey;
+}
+
+tbody > tr:nth-of-type(even) {
+  background-color: #3b687848;
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 0, 0.224);
+}
