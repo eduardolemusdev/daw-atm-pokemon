@@ -22,3 +22,7 @@
     rgba(48, 98, 116, 1) 100%
   );
 }
+
+option {
+  background: #306274 !important;
+}

@@ -33,16 +33,20 @@
         </button>
         <button bank-operation="withdraw"
           class="bg-pokemon-theme text-4xl text-white font-bold p-10 rounded-md cursor-pointer">
-          Transferir
+          Retirar
         </button>
         <button bank-operation="list-transactions"
           class="bg-pokemon-theme text-4xl text-white font-bold p-10 rounded-md cursor-pointer">
-          Transaccions
+          Historial
         </button>
-        <button bank-operation="account-status"
-          class="bg-pokemon-theme text-4xl text-white font-bold p-10 rounded-r-2xl cursor-pointer">
-          +
-        </button>
+
+        <select id="pet-select" class="bg-pokemon-theme text-3xl p-4 text-white font-bold rounded-r-2xl cursor-pointer">
+          <option value="">-- Pago de Servicios --</option>
+          <option value="dog">Agua</option>
+          <option value="cat">Energía Eléctrica</option>
+          <option value="hamster">Internet</option>
+          <option value="parrot">Telefonía</option>
+        </select>
       </div>
 
       <div class="flex flex-col gap-y-4 bg-pokemon-theme rounded-xl w-[620px] p-12">
