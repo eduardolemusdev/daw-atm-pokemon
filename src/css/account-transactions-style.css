@@ -9,4 +9,5 @@ tbody > tr:nth-of-type(even) {
 
 tbody tr:hover {
   background-color: rgba(255, 255, 0, 0.224);
+  background-color: rgba(13, 163, 28, 0.459);
 }
