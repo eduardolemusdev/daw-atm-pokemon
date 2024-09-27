@@ -1,5 +1,8 @@
 const digitsPanel = new DigitPanel();
 const redirectAtmMenuBtn = $("#redirectAtmMenuBtn");
+const logoutButton = $("#logoutButton");
+
+logoutButton.addEventListener("click", () => redirectHome());
 
 redirectAtmMenuBtn.addEventListener("click", () => {
   redirectTomeAtmMenu();

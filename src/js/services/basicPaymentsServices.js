@@ -1,8 +1,11 @@
 const redirectAtmMenuBtn = $("#redirectAtmMenuBtn");
 
-redirectAtmMenuBtn.addEventListener("click", () => {
-  redirectTomeAtmMenu();
-});
+redirectAtmMenuBtn.addEventListener("click", () => redirectTomeAtmMenu());
+
+const logoutButton = $("#logoutButton");
+
+logoutButton.addEventListener("click", () => redirectHome());
+
 const queryParams = new URLSearchParams(window.location.search);
 
 const currentServiceToPay = queryParams.get("service");

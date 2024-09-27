@@ -4,6 +4,10 @@ redirectAtmMenuBtn.addEventListener("click", () => {
   redirectTomeAtmMenu();
 });
 
+const logoutButton = $("#logoutButton");
+
+logoutButton.addEventListener("click", () => redirectHome());
+
 const pieChartServices = $("#pieServices");
 const barChartIncomeTransacctions = $("#incomeTransacctionsChart");
 const barCharOutTransacctions = $("#outTransacctionsChart");
