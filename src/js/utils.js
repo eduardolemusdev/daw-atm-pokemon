@@ -1,14 +1,21 @@
 const $ = (element) => document.querySelector(element);
 const $$ = (elements) => document.querySelectorAll(elements);
 
+const redirect = (url) => {
+  window.location.href = url;
+};
 const redirectTomeAtmMenu = () => {
-  window.location.href = "/src/atm/atm-menu.html";
+  redirect("/src/atm/atm-menu.html");
 };
 
 const redirectTomeAccountTransacctions = () => {
-  window.location.href = "/src/atm/account-transactions.html";
+  redirect("/src/atm/account-transactions.html");
 };
 
 const redirectToAccountStats = () => {
-  window.location.href = "/src/atm/account-stats.html";
+  redirect("/src/atm/account-stats.html");
+};
+
+const redirectToWithdraws = () => {
+  redirect("/src/atm/withdraw-account.html");
 };
