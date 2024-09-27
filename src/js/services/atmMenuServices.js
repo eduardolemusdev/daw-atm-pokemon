@@ -1,10 +1,13 @@
 const listTransactionsButton = $('button[bank-operation="list-transactions"]');
 const showChartsButton = $('[bank-operation="charts"]');
 const withdrawButton = $('[bank-operation="withdraw"]');
+const depositButton = $('[bank-operation="deposit"]');
 
-listTransactionsButton.addEventListener("click", () => {
-  redirectTomeAccountTransacctions();
-});
+depositButton.addEventListener("click", () => redirectToDeposits());
+
+listTransactionsButton.addEventListener("click", () =>
+  redirectTomeAccountTransacctions()
+);
 
 showChartsButton.addEventListener("click", () => {
   redirectToAccountStats();

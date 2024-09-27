@@ -19,3 +19,7 @@ const redirectToAccountStats = () => {
 const redirectToWithdraws = () => {
   redirect("/src/atm/withdraw-account.html");
 };
+
+const redirectToDeposits = () => {
+  redirect("/src/atm/deposit-account.html");
+};
