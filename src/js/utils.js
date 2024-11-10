@@ -25,5 +25,6 @@ const redirectToDeposits = () => {
 };
 
 const redirectHome = () => {
+  localStorage.setItem("atm_current_user", null);
   redirect("/src/");
 };

@@ -1,87 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATM-001</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/Currency.js"></script>
+    <script src="../js/ATM.js"></script>
+    <script src="../js/services/atmMenuServices.js" defer></script>
+    <link rel="stylesheet" href="../css/mintailwind.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="shortcut icon" href="../imgs/atm-icon.ico" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATM-001</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../js/utils.js"></script>
-  <script src="../js/ATM.js"></script>
-  <script src="../js/services/atmMenuServices.js" defer></script>
-  <link rel="stylesheet" href="../css/mintailwind.css" />
-  <link rel="stylesheet" href="../css/main.css" />
-  <link rel="shortcut icon" href="../imgs/atm-icon.ico" type="image/x-icon">
-
-</head>
-
-<body>
-  <div class="w-full h-full">
-    <!-- Header ATM -->
-    <div class="flex justify-between items-center w-full h-28 bg-teal-600 px-20">
-      <div class="w-fit">
-        <img src="/src/imgs/pokemon-bank-logo.png" alt="logo" />
-      </div>
-      <div>
-        <h1 class="font-bold text-5xl">ATM-001</h1>
-      </div>
-    </div>
-    <!-- ATM ACTIONS -->
-    <section class="flex flex-col items-center w-full py-12 bg-[#E7F2F2]" id="atmContent">
-      <div class="flex justify-center gap-6 w-full h-fit  pb-12">
-        <button bank-operation="deposit"
-          class="bg-pokemon-theme hover:bg-teal-500 text-2xl text-white font-bold p-10 rounded-l-full cursor-pointer">
-          Depositar
-        </button>
-        <button bank-operation="withdraw"
-          class="bg-pokemon-theme text-2xl text-white font-bold p-10 rounded-md cursor-pointer">
-          Retirar
-        </button>
-        <button bank-operation="list-transactions"
-          class="bg-pokemon-theme text-2xl text-white font-bold p-10 rounded-md cursor-pointer">
-          Historial
-        </button>
-        <button bank-operation="charts"
-          class="bg-pokemon-theme text-2xl text-white font-bold p-10 rounded-md cursor-pointer">
-          Estadisticas
-        </button>
-
-        <select id="servicePaymentSelect"
-          class="bg-pokemon-theme text-3xl p-4 text-white font-bold rounded-r-2xl cursor-pointer">
-          <option value="">-- Pago de Servicios --</option>
-          <option value="water">Agua</option>
-          <option value="energy">Energía Eléctrica</option>
-          <option value="internet">Internet</option>
-          <option value="phone">Telefonía</option>
-        </select>
-      </div>
-
-      <div class="flex flex-col gap-y-4 bg-pokemon-theme rounded-xl w-[620px] p-12">
-        <div>
-          <span id="accountID" class="underline text-white text-xl font-semibold">Cuenta de ahorros 1234567890</span>
+  <body>
+    <div class="w-full h-full">
+      <!-- Header ATM -->
+      <div
+        class="flex justify-between items-center w-full h-28 bg-teal-600 px-20"
+      >
+        <div class="w-fit">
+          <img src="/src/imgs/pokemon-bank-logo.png" alt="logo" />
         </div>
         <div>
-          <span id="balanceAmount" class="text-white text-2xl font-bold">Balance: $765.44</span>
+          <h1 class="font-bold text-5xl">ATM-001</h1>
         </div>
-        <div>
+      </div>
+      <!-- ATM ACTIONS -->
+      <section
+        class="flex flex-col items-center w-full py-12 bg-[#E7F2F2]"
+        id="atmContent"
+      >
+        <div class="flex justify-center gap-6 w-full h-fit pb-12">
+          <button
+            bank-operation="deposit"
+            class="bg-pokemon-theme hover:bg-teal-500 text-2xl text-white font-bold p-10 rounded-l-full cursor-pointer"
+          >
+            Depositar
+          </button>
+          <button
+            bank-operation="withdraw"
+            class="bg-pokemon-theme text-2xl text-white font-bold p-10 rounded-md cursor-pointer"
+          >
+            Retirar
+          </button>
+          <button
+            bank-operation="list-transactions"
+            class="bg-pokemon-theme text-2xl text-white font-bold p-10 rounded-md cursor-pointer"
+          >
+            Historial
+          </button>
+          <button
+            bank-operation="charts"
+            class="bg-pokemon-theme text-2xl text-white font-bold p-10 rounded-md cursor-pointer"
+          >
+            Estadisticas
+          </button>
+
+          <select
+            id="servicePaymentSelect"
+            class="bg-pokemon-theme text-3xl p-4 text-white font-bold rounded-r-2xl cursor-pointer"
+          >
+            <option value="">-- Pago de Servicios --</option>
+            <option value="water">Agua</option>
+            <option value="energy">Energía Eléctrica</option>
+            <option value="internet">Internet</option>
+            <option value="phone">Telefonía</option>
+          </select>
+        </div>
+
+        <div
+          class="flex flex-col gap-y-3 bg-pokemon-theme rounded-xl w-[620px] p-12"
+        >
           <div>
-            <span id="lastTransaction" class="text-[#0BFF06] text-2xl font-bold">+ $165.89</span>
+            <span
+              id="userName"
+              class="underline text-white text-xl font-semibold"
+              >Cuenta de ahorros 1234567890</span
+            >
           </div>
           <div>
-            <span id="beforeLastTransaction" class="text-orange-300 text-xl font-bold">- $15.23</span>
+            <span
+              id="accountID"
+              class="underline text-white text-xl font-semibold"
+              >Cuenta de ahorros 1234567890</span
+            >
+          </div>
+          <div>
+            <span id="balanceAmount" class="text-white text-2xl font-bold"
+              >Balance: $765.44</span
+            >
           </div>
         </div>
+      </section>
+
+      <!-- Signin footer -->
+      <div class="flex justify-end w-full h-32 bg-emerald-400">
+        <button
+          class="flex justify-around items-center bg-yellow-500 font-bold w-96"
+          id="logoutButton"
+        >
+          <img src="/src/imgs/bulbasaur.png" alt="bulbasaur" />
+          <span class="text-black text-3xl">Cerrar Sesión</span>
+        </button>
       </div>
-    </section>
-
-    <!-- Signin footer -->
-    <div class="flex justify-end  w-full h-32 bg-emerald-400">
-      <button class="flex justify-around items-center bg-yellow-500 font-bold w-96" id="logoutButton">
-        <img src="/src/imgs/bulbasaur.png" alt="bulbasaur" />
-        <span class="text-black text-3xl">Cerrar Sesión</span>
-      </button>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

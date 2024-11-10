@@ -4,32 +4,48 @@ const userDatabaseSimulation = (account, pin) => {
   const db = [
     {
       name: "Ash Ketchum",
-      bankAccount: "1234567890",
-      pin: "4321",
+      bankAccount: "0987654321",
+      pin: "1234",
+      balance: "500", // Balance inicial
+      transactionHistory: [], // Historial de transacciones
     },
     {
       name: "Misty Waterflower",
       bankAccount: "9876543210",
       pin: "1234",
+      balance: "150.42",
+      transactionHistory: [],
     },
     {
       name: "Brock Harrison",
       bankAccount: "5678901234",
       pin: "5678",
+      balance: 1200,
+      transactionHistory: [],
     },
     {
       name: "Jessie",
       bankAccount: "3456789012",
       pin: "8765",
+      balance: "820.90",
+      transactionHistory: [],
     },
     {
       name: "James",
       bankAccount: "6789012345",
       pin: "3456",
+      balance: "950.25",
+      transactionHistory: [],
     },
   ];
+  localStorage.setItem("atm_db", JSON.stringify(db));
+  const loacalSotargeUsers = JSON.parse(localStorage.getItem("atm_db"));
 
-  return db.find((user) => user.bankAccount === account && user.pin === pin);
+  console.log(loacalSotargeUsers);
+
+  return loacalSotargeUsers.find(
+    (user) => user.bankAccount === account && user.pin === pin
+  );
 };
 
 signinButton.addEventListener("click", async () => {
@@ -62,6 +78,9 @@ signinButton.addEventListener("click", async () => {
   }
 
   const userExist = userDatabaseSimulation(account, pin);
+  console.log(userExist);
+
+  localStorage.setItem("atm_current_user", JSON.stringify(userExist));
 
   if (!userExist) {
     Swal.fire({

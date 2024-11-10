@@ -1,7 +1,7 @@
 class Currency {
   amountInCents = 0;
   constructor(amount) {
-    this.setAmount(amount);
+    this.#setAmount(amount);
   }
 
   add(...amounts) {
@@ -16,14 +16,19 @@ class Currency {
     return this.amountInCents;
   }
 
+  getAmountInDollars() {
+    return this.amountInCents / 100;
+  }
+
   #isValidAmountFormat(amount) {
-    const validAmountRegex = /^\d{1,3}(?:,\d{3})*(?:\.\d{2})?$/;
+    const validAmountRegex = /^\d+(\.\d{2})?$/;
+
     const isValidAmount = validAmountRegex.test(amount);
 
     return isValidAmount;
   }
 
-  setAmount(amount) {
+  #setAmount(amount) {
     const isValidAmount = this.#isValidAmountFormat(amount);
 
     if (!isValidAmount) {
