@@ -11,10 +11,14 @@ const panelDigitConfirmButton = $("#panelDigitConfirmButton");
 panelDigitConfirmButton.addEventListener("click", () => {
   try {
     const trasactionAmount = $("#moneyAmount").textContent;
+    const destinyAccoundID = $("#accountDestination").value;
 
-    const currency = new Currency(trasactionAmount);
-    console.log(currency.amountInCents);
-
+    const atm = new ATM();
+    const transaction = atm.addTransaction(
+      destinyAccoundID,
+      trasactionAmount,
+      TRANSACTIONS_TYPES.DEPOSIT
+    );
     Swal.fire({
       title: "Desea confirmar la transacción?",
       showDenyButton: true,
@@ -26,16 +30,20 @@ panelDigitConfirmButton.addEventListener("click", () => {
 
       if (result.isConfirmed) {
         Swal.fire(
-          "Transacción efectuada!" + `$${trasactionAmount}`,
+          "Transacción efectuada!" +
+            `\nID: ${transaction.id}` +
+            `\nMonto: ${transaction.amount}` +
+            `\nFecha: ${transaction.date}`,
           "",
           "success"
         );
       }
     });
   } catch (error) {
+    console.log(error);
+
     Swal.fire({
-      title:
-        "Por favor, ingresa un monto válido. Ejemplo de formato: 1000.49 ó 10.50",
+      title: error.message,
       confirmButtonText: "OK",
       icon: "error",
     });

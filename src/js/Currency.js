@@ -4,12 +4,18 @@ class Currency {
     this.#setAmount(amount);
   }
 
-  add(...amounts) {
-    for (const amountItem of amounts) {
-      if (amountItem instanceof Currency) {
-        this.amountInCents += amountItem.getAmountCents();
-      }
+  add(cents) {
+    this.amountInCents = this.amountInCents + cents;
+  }
+
+  substractInCents(cents) {
+    if (cents > this.#isValidAmountFormat) {
+      throw new Error("La cantidad a restar es mayor que el balance.");
     }
+
+    this.amountInCents = this.amountInCents - cents;
+
+    return this.amountInCents;
   }
 
   getAmountCents() {
@@ -32,8 +38,10 @@ class Currency {
     const isValidAmount = this.#isValidAmountFormat(amount);
 
     if (!isValidAmount) {
-      throw new Error("Formato del monto no valido.");
+      throw new Error(
+        "Por favor, ingresa un monto válido. Ejemplo de formato: 1000.49 ó 10.50"
+      );
     }
-    this.amountInCents = parseFloat(amount.replace(",", "")) * 100;
+    this.amountInCents = Math.round(parseFloat(amount.replace(",", "")) * 100);
   }
 }

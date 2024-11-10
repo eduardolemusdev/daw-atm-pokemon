@@ -20,7 +20,7 @@ const userDatabaseSimulation = (account, pin) => {
       name: "Brock Harrison",
       bankAccount: "5678901234",
       pin: "5678",
-      balance: 1200,
+      balance: "1200",
       transactionHistory: [],
     },
     {
@@ -40,8 +40,6 @@ const userDatabaseSimulation = (account, pin) => {
   ];
   localStorage.setItem("atm_db", JSON.stringify(db));
   const loacalSotargeUsers = JSON.parse(localStorage.getItem("atm_db"));
-
-  console.log(loacalSotargeUsers);
 
   return loacalSotargeUsers.find(
     (user) => user.bankAccount === account && user.pin === pin
