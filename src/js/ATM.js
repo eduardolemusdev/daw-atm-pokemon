@@ -17,8 +17,6 @@ class ATM {
   #accountsLocalStorageKey = "atm_db";
 
   addTransaction(destinyAccountID, amount, transactionType) {
-    this.#validateAccountsKeyLocalStorageExist();
-
     const accounts = JSON.parse(
       localStorage.getItem(this.#accountsLocalStorageKey)
     );
@@ -72,14 +70,16 @@ class ATM {
       amount: `$${transactionAmount.getAmountInDollars()}`,
       transactionType,
       moveType: TRANSACTION_MOVE_TYPE.INCOMING,
+      senderAccountID: senderAccount.bankAccount,
     };
 
     const senderTransactionHistoryItem = {
       id: crypto.randomUUID(),
-      date: new Date().toLocaleString(),
+      date: new Date().toUTCString(),
       amount: `$${transactionAmount.getAmountInDollars()}`,
       transactionType,
       moveType: TRANSACTION_MOVE_TYPE.OUTGOING,
+      destinyAccountID,
     };
 
     senderAccount.transactionHistory = [
@@ -114,22 +114,65 @@ class ATM {
     };
   }
 
+  startWithdraw(amount) {
+    const accounts = JSON.parse(
+      localStorage.getItem(this.#accountsLocalStorageKey)
+    );
+
+    const withdrawAmount = new Currency(amount);
+
+    const userAccount = JSON.parse(localStorage.getItem("atm_current_user"));
+    if (!userAccount) {
+      throw new Error("Servicio no disponible.");
+    }
+
+    const userFounds = new Currency(userAccount.balance);
+
+    if (withdrawAmount.amountInCents > userFounds.amountInCents) {
+      throw new Error(
+        "Fondos insuficientes, el monto de la transacción es mayor al balance de su cuenta."
+      );
+    }
+
+    userFounds.substractInCents(withdrawAmount.amountInCents);
+
+    userAccount.balance = `${userFounds.getAmountInDollars()}`;
+
+    const restAccounts = accounts.filter(
+      (account) => account.bankAccount !== userAccount.bankAccount
+    );
+
+    const withdrawHistoryItem = {
+      id: crypto.randomUUID(),
+      date: new Date().toLocaleString(),
+      amount: `$${withdrawAmount.getAmountInDollars()}`,
+      transactionType: TRANSACTIONS_TYPES.WITHDRAW,
+      moveType: TRANSACTION_MOVE_TYPE.OUTGOING,
+    };
+
+    userAccount.transactionHistory = [
+      ...userAccount.transactionHistory,
+      withdrawHistoryItem,
+    ];
+
+    const updatedAccounts = [...restAccounts, userAccount];
+    localStorage.setItem(
+      this.#accountsLocalStorageKey,
+      JSON.stringify(updatedAccounts)
+    );
+
+    localStorage.setItem("atm_current_user", JSON.stringify(userAccount));
+    return {
+      newBalance: `${userFounds.getAmountInDollars()}`,
+      transaction: withdrawHistoryItem,
+    };
+  }
+
   checkAccountExist(accountID) {
     const accounts = JSON.parse(
       localStorage.getItem(this.#accountsLocalStorageKey)
     );
 
     return accounts.find((account) => account.bankAccount === accountID);
-  }
-
-  #validateAccountsKeyLocalStorageExist() {
-    const accountsFromLocalStorage = localStorage.getItem(
-      this.#accountsLocalStorageKey
-    );
-    const existAccounts = !!accountsFromLocalStorage;
-
-    if (!existAccounts) {
-      localStorage.setItem(this.#accountsLocalStorageKey, JSON.stringify([]));
-    }
   }
 }

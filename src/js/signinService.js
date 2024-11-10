@@ -1,45 +1,49 @@
 const signinButton = document.getElementById("getPIN");
 
 const userDatabaseSimulation = (account, pin) => {
-  const db = [
-    {
-      name: "Ash Ketchum",
-      bankAccount: "0987654321",
-      pin: "1234",
-      balance: "500", // Balance inicial
-      transactionHistory: [], // Historial de transacciones
-    },
-    {
-      name: "Misty Waterflower",
-      bankAccount: "9876543210",
-      pin: "1234",
-      balance: "150.42",
-      transactionHistory: [],
-    },
-    {
-      name: "Brock Harrison",
-      bankAccount: "5678901234",
-      pin: "5678",
-      balance: "1200",
-      transactionHistory: [],
-    },
-    {
-      name: "Jessie",
-      bankAccount: "3456789012",
-      pin: "8765",
-      balance: "820.90",
-      transactionHistory: [],
-    },
-    {
-      name: "James",
-      bankAccount: "6789012345",
-      pin: "3456",
-      balance: "950.25",
-      transactionHistory: [],
-    },
-  ];
-  localStorage.setItem("atm_db", JSON.stringify(db));
-  const loacalSotargeUsers = JSON.parse(localStorage.getItem("atm_db"));
+  let loacalSotargeUsers = JSON.parse(localStorage.getItem("atm_db"));
+
+  if (!loacalSotargeUsers) {
+    const db = [
+      {
+        name: "Ash Ketchum",
+        bankAccount: "0987654321",
+        pin: "1234",
+        balance: "500", // Balance inicial
+        transactionHistory: [], // Historial de transacciones
+      },
+      {
+        name: "Misty Waterflower",
+        bankAccount: "9876543210",
+        pin: "1234",
+        balance: "150.42",
+        transactionHistory: [],
+      },
+      {
+        name: "Brock Harrison",
+        bankAccount: "5678901234",
+        pin: "5678",
+        balance: "1200",
+        transactionHistory: [],
+      },
+      {
+        name: "Jessie",
+        bankAccount: "3456789012",
+        pin: "8765",
+        balance: "820.90",
+        transactionHistory: [],
+      },
+      {
+        name: "James",
+        bankAccount: "6789012345",
+        pin: "3456",
+        balance: "950.25",
+        transactionHistory: [],
+      },
+    ];
+    localStorage.setItem("atm_db", JSON.stringify(db));
+    loacalSotargeUsers = JSON.parse(localStorage.getItem("atm_db"));
+  }
 
   return loacalSotargeUsers.find(
     (user) => user.bankAccount === account && user.pin === pin
