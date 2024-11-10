@@ -1,64 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transacciones ATM-001</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="../js/utils.js"></script>
-    <script src="../js/ATM.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/ATM.js"></script>
 
-    <script src="../js/services/basicPaymentsServices.js" defer></script>
-    <link rel="stylesheet" href="../css/mintailwind.css" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="shortcut icon" href="../imgs/atm-icon.ico" type="image/x-icon">
+    <script src="/js/services/basicPaymentsServices.js" defer></script>
+    <link rel="stylesheet" href="/css/mintailwind.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="shortcut icon" href="/imgs/atm-icon.ico" type="image/x-icon" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="w-full h-full">
-        <!-- Header ATM -->
-        <div class="flex justify-between items-center w-full h-28 bg-teal-600 px-20">
-            <div class="w-fit">
-                <img src="/src/imgs/pokemon-bank-logo.png" alt="logo" />
-            </div>
-            <div>
-                <h1 class="font-bold text-5xl">ATM-001</h1>
-            </div>
+      <!-- Header ATM -->
+      <div
+        class="flex justify-between items-center w-full h-28 bg-teal-600 px-20"
+      >
+        <div class="w-fit">
+          <img src="/imgs/pokemon-bank-logo.png" alt="logo" />
         </div>
-
+        <div>
+          <h1 class="font-bold text-5xl">ATM-001</h1>
+        </div>
+      </div>
     </div>
 
     <!-- ATM ACTIONS -->
-    <section class="flex flex-col items-center justify-center w-full  h-[720px] bg-[#E7F2F2] px-12 py-12"
-        id="atmContent">
-
-        <!-- DateRanges Section -->
-        <h1 class="font-semibold text-5xl" id="paymentsTitle"></h1>
-        <div class="py-12">
-            <div class="flex flex-col gap-4 text-6xl">
-                <span class="font-semibold">Ingresar NPE: </span>
-                <input type="text" class="p-4 rounded-lg" placeholder="00000-000-00000-00000">
-            </div>
-            <div class="text-7xl pt-8">
-                <button type="button" class="w-full bg-black/80 text-white p-4 rounded-lg"
-                    id="paymentServiceConfirmButton">CONFIRMAR</button>
-            </div>
+    <section
+      class="flex flex-col items-center justify-center w-full h-[720px] bg-[#E7F2F2] px-12 py-12"
+      id="atmContent"
+    >
+      <!-- DateRanges Section -->
+      <h1 class="font-semibold text-5xl" id="paymentsTitle"></h1>
+      <div class="py-12">
+        <div class="flex flex-col gap-4 text-6xl">
+          <span class="font-semibold">Ingresar NPE: </span>
+          <input
+            type="text"
+            class="p-4 rounded-lg"
+            placeholder="00000-000-00000-00000"
+          />
         </div>
+        <div class="text-7xl pt-8">
+          <button
+            type="button"
+            class="w-full bg-black/80 text-white p-4 rounded-lg"
+            id="paymentServiceConfirmButton"
+          >
+            CONFIRMAR
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Signin footer -->
-    <div class="flex justify-between  gap-x-4 w-full h-32 bg-emerald-400">
-        <button class="flex items-center gap-x-4 bg-[#306274] hover:bg-[#306274] font-bold px-12"
-            id="redirectAtmMenuBtn">
-            <span class="text-white text-3xl">Regresar</span>
-        </button>
-        <button class="flex justify-around items-center gap-x-4 bg-yellow-500 font-bold px-12" id="logoutButton">
-            <span class="text-black text-3xl">Cerrar Sesión</span>
-        </button>
+    <div class="flex justify-between gap-x-4 w-full h-32 bg-emerald-400">
+      <button
+        class="flex items-center gap-x-4 bg-[#306274] hover:bg-[#306274] font-bold px-12"
+        id="redirectAtmMenuBtn"
+      >
+        <span class="text-white text-3xl">Regresar</span>
+      </button>
+      <button
+        class="flex justify-around items-center gap-x-4 bg-yellow-500 font-bold px-12"
+        id="logoutButton"
+      >
+        <span class="text-black text-3xl">Cerrar Sesión</span>
+      </button>
     </div>
-</body>
-
+  </body>
 </html>

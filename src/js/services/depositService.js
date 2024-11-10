@@ -1,3 +1,5 @@
+import { PdfService } from "./pdfService";
+
 const redirectAtmMenuBtn = $("#redirectAtmMenuBtn");
 
 redirectAtmMenuBtn.addEventListener("click", () => redirectTomeAtmMenu());
@@ -14,11 +16,16 @@ panelDigitConfirmButton.addEventListener("click", () => {
     const destinyAccoundID = $("#accountDestination").value;
 
     const atm = new ATM();
-    const transaction = atm.addTransaction(
-      destinyAccoundID,
-      trasactionAmount,
-      TRANSACTIONS_TYPES.DEPOSIT
-    );
+    const pdfService = new PdfService();
+
+    console.log(trasactionAmount);
+
+    const { senderTransactionHistoryItem: transaction, destinyAccountID } =
+      atm.addTransaction(
+        destinyAccoundID,
+        trasactionAmount,
+        TRANSACTIONS_TYPES.DEPOSIT
+      );
     Swal.fire({
       title: "Desea confirmar la transacción?",
       showDenyButton: true,
@@ -29,6 +36,11 @@ panelDigitConfirmButton.addEventListener("click", () => {
       console.log(result);
 
       if (result.isConfirmed) {
+        pdfService.generateTransactionPDF(
+          transaction.id,
+          transaction.amount,
+          destinyAccoundID
+        );
         Swal.fire(
           "Transacción efectuada!" +
             `\nID: ${transaction.id}` +

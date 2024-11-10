@@ -5,26 +5,26 @@ const redirect = (url) => {
   window.location.href = url;
 };
 const redirectTomeAtmMenu = () => {
-  redirect("/src/atm/atm-menu.html");
+  redirect("/atm/atm-menu.html");
 };
 
 const redirectTomeAccountTransacctions = () => {
-  redirect("/src/atm/account-transactions.html");
+  redirect("/atm/account-transactions.html");
 };
 
 const redirectToAccountStats = () => {
-  redirect("/src/atm/account-stats.html");
+  redirect("/atm/account-stats.html");
 };
 
 const redirectToWithdraws = () => {
-  redirect("/src/atm/withdraw-account.html");
+  redirect("/atm/withdraw-account.html");
 };
 
 const redirectToDeposits = () => {
-  redirect("/src/atm/deposit-account.html");
+  redirect("/atm/deposit-account.html");
 };
 
 const redirectHome = () => {
   localStorage.setItem("atm_current_user", null);
-  redirect("/src/");
+  redirect("/");
 };

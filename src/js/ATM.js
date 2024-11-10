@@ -38,6 +38,7 @@ class ATM {
     console.log(senderAccount, destinyAccount);
 
     const senderFounds = new Currency(senderAccount.balance);
+
     const destinyFounds = new Currency(destinyAccount.balance);
 
     console.log(destinyFounds, senderFounds);
@@ -107,7 +108,10 @@ class ATM {
 
     //actualizamos el current user
     localStorage.setItem("atm_current_user", JSON.stringify(senderAccount));
-    return senderTransactionHistoryItem;
+    return {
+      senderTransactionHistoryItem,
+      destinyAccountID,
+    };
   }
 
   checkAccountExist(accountID) {

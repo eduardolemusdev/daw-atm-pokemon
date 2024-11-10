@@ -1,126 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transacciones ATM-001</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/utils.js"></script>
-    <script src="../js/ATM.js"></script>
-    <script src="../js/services/transactionsServices.js" defer></script>
-    <link rel="stylesheet" href="../css/mintailwind.css" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/account-transactions-style.css">
-    <link rel="shortcut icon" href="../imgs/atm-icon.ico" type="image/x-icon">
+    <script src="/js/utils.js"></script>
+    <script src="/js/ATM.js"></script>
+    <script src="/js/services/transactionsServices.js" defer></script>
+    <link rel="stylesheet" href="/css/mintailwind.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/account-transactions-style.css" />
+    <link rel="shortcut icon" href="/imgs/atm-icon.ico" type="image/x-icon" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="w-full h-full">
-        <!-- Header ATM -->
-        <div class="flex justify-between items-center w-full h-28 bg-teal-600 px-20">
-            <div class="w-fit">
-                <img src="/src/imgs/pokemon-bank-logo.png" alt="logo" />
-            </div>
-            <div>
-                <h1 class="font-bold text-5xl">ATM-001</h1>
-            </div>
+      <!-- Header ATM -->
+      <div
+        class="flex justify-between items-center w-full h-28 bg-teal-600 px-20"
+      >
+        <div class="w-fit">
+          <img src="/imgs/pokemon-bank-logo.png" alt="logo" />
         </div>
-        <!-- ATM ACTIONS -->
-        <section class="flex flex-col items-center w-full py-12 h-screen bg-[#E7F2F2] px-28" id="atmContent">
-
-            <!-- DateRanges Section -->
-            <h1 class="font-bold text-4xl">Listado de Transacciones</h1>
-            <div class="pt-8">
-                <div class="pt-6 flex w-fit gap-x-7">
-                    <h2 class="font-semibold text-3xl">Rango de fechas</h2>
-
-                    <div class="flex flex-col">
-                        <span class="font-medium pb-2">Fecha inicial:</span>
-                        <input type="date" name="startTransactions" id="startTransactions" max="2024-09-25"
-                            value="2024-08-25" class="p-2 rounded-sm bg-blue-100">
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-medium pb-2">Fecha final:</span>
-                        <input type="date" name="lastTransactions" id="lastTransactions" max="2024-09-25"
-                            value="2024-09-25" class="p-2 rounded-sm bg-blue-100">
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-10 w-full h-80 overflow-auto">
-                <table class="border-y border-gray-500 w-full">
-                    <caption class="caption-bottom pt-10">
-                        <em>Listado de transacciones en el rando de fechas especificado.</em>
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Cuenta Saliente ID</th>
-                            <th scope="col">Monto $</th>
-                            <th scope="col">Cuenta Destino ID</th>
-                            <th scope="col">Dueño</th>
-                            <th scope="col">Fecha de Transacción</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <tr>
-                            <th scope="row">123123</th>
-                            <td>123123123123</td>
-                            <td>$123123.23</td>
-                            <td>9999999999</td>
-                            <td>Rodrigo Lemmus</td>
-                            <td>2020-12-02</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">123123</th>
-                            <td>123123123123</td>
-                            <td>$123123.23</td>
-                            <td>9999999999</td>
-                            <td>Rodrigo Lemmus</td>
-                            <td>2020-12-02</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">123123</th>
-                            <td>123123123123</td>
-                            <td>$123123.23</td>
-                            <td>9999999999</td>
-                            <td>Rodrigo Lemmus</td>
-                            <td>2020-12-02</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">123123</th>
-                            <td>123123123123</td>
-                            <td>$123123.23</td>
-                            <td>9999999999</td>
-                            <td>Rodrigo Lemmus</td>
-                            <td>2020-12-02</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">123123</th>
-                            <td>123123123123</td>
-                            <td>$123123.23</td>
-                            <td>9999999999</td>
-                            <td>Rodrigo Lemmus</td>
-                            <td>2020-12-02</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Signin footer -->
-        <div class="flex justify-between  gap-x-4 w-full h-32 bg-emerald-400">
-            <button class="flex items-center gap-x-4 bg-[#306274] hover:bg-[#306274] font-bold px-12"
-                id="redirectAtmMenuBtn">
-                <span class="text-white text-3xl">Regresar</span>
-            </button>
-            <button class="flex justify-around items-center gap-x-4 bg-yellow-500 font-bold px-12" id="logoutButton">
-                <span class="text-black text-3xl">Cerrar Sesión</span>
-            </button>
+        <div>
+          <h1 class="font-bold text-5xl">ATM-001</h1>
         </div>
+      </div>
+      <!-- ATM ACTIONS -->
+      <section
+        class="flex flex-col items-center w-full py-12 h-screen bg-[#E7F2F2] px-28"
+        id="atmContent"
+      >
+        <!-- DateRanges Section -->
+        <h1 class="font-bold text-4xl">Listado de Transacciones</h1>
+        <div class="pt-8">
+          <div class="pt-6 flex w-fit gap-x-7">
+            <h2 class="font-semibold text-3xl">Rango de fechas</h2>
+
+            <div class="flex flex-col">
+              <span class="font-medium pb-2">Fecha inicial:</span>
+              <input
+                type="date"
+                name="startTransactions"
+                id="startTransactions"
+                max="2024-09-25"
+                value="2024-08-25"
+                class="p-2 rounded-sm bg-blue-100"
+              />
+            </div>
+            <div class="flex flex-col">
+              <span class="font-medium pb-2">Fecha final:</span>
+              <input
+                type="date"
+                name="lastTransactions"
+                id="lastTransactions"
+                max="2024-09-25"
+                value="2024-09-25"
+                class="p-2 rounded-sm bg-blue-100"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-10 w-full h-80 overflow-auto">
+          <table class="border-y border-gray-500 w-full">
+            <caption class="caption-bottom pt-10">
+              <em
+                >Listado de transacciones en el rando de fechas
+                especificado.</em
+              >
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Cuenta Saliente ID</th>
+                <th scope="col">Monto $</th>
+                <th scope="col">Cuenta Destino ID</th>
+                <th scope="col">Dueño</th>
+                <th scope="col">Fecha de Transacción</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <th scope="row">123123</th>
+                <td>123123123123</td>
+                <td>$123123.23</td>
+                <td>9999999999</td>
+                <td>Rodrigo Lemmus</td>
+                <td>2020-12-02</td>
+              </tr>
+              <tr>
+                <th scope="row">123123</th>
+                <td>123123123123</td>
+                <td>$123123.23</td>
+                <td>9999999999</td>
+                <td>Rodrigo Lemmus</td>
+                <td>2020-12-02</td>
+              </tr>
+              <tr>
+                <th scope="row">123123</th>
+                <td>123123123123</td>
+                <td>$123123.23</td>
+                <td>9999999999</td>
+                <td>Rodrigo Lemmus</td>
+                <td>2020-12-02</td>
+              </tr>
+              <tr>
+                <th scope="row">123123</th>
+                <td>123123123123</td>
+                <td>$123123.23</td>
+                <td>9999999999</td>
+                <td>Rodrigo Lemmus</td>
+                <td>2020-12-02</td>
+              </tr>
+              <tr>
+                <th scope="row">123123</th>
+                <td>123123123123</td>
+                <td>$123123.23</td>
+                <td>9999999999</td>
+                <td>Rodrigo Lemmus</td>
+                <td>2020-12-02</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Signin footer -->
+      <div class="flex justify-between gap-x-4 w-full h-32 bg-emerald-400">
+        <button
+          class="flex items-center gap-x-4 bg-[#306274] hover:bg-[#306274] font-bold px-12"
+          id="redirectAtmMenuBtn"
+        >
+          <span class="text-white text-3xl">Regresar</span>
+        </button>
+        <button
+          class="flex justify-around items-center gap-x-4 bg-yellow-500 font-bold px-12"
+          id="logoutButton"
+        >
+          <span class="text-black text-3xl">Cerrar Sesión</span>
+        </button>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

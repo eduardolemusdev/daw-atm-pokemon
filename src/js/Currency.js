@@ -27,7 +27,7 @@ class Currency {
   }
 
   #isValidAmountFormat(amount) {
-    const validAmountRegex = /^\d+(\.\d{2})?$/;
+    const validAmountRegex = /^\d+(\.\d{1,2})?$/;
 
     const isValidAmount = validAmountRegex.test(amount);
 
