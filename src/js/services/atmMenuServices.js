@@ -23,7 +23,7 @@ paymentSelect.addEventListener("change", (e) => {
   console.log(optionSelected);
 
   if (optionSelected) {
-    redirect(`/src/atm/basic-services-payment.html?service=${optionSelected}`);
+    redirect(`/atm/basic-services-payment.html?service=${optionSelected}`);
   }
 });
 
