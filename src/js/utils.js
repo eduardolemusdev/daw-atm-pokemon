@@ -4,6 +4,20 @@ const $$ = (elements) => document.querySelectorAll(elements);
 const redirect = (url) => {
   window.location.href = url;
 };
+
+const checkAuthUser = () => {
+  const currentUser = localStorage.getItem("atm_current_user");
+  if (!currentUser) {
+    Swal.fire({
+      title: "Servicio no disponible",
+      confirmButtonText: "OK",
+      icon: "error",
+    });
+    redirectHome();
+    return null;
+  }
+  return JSON.parse(currentUser);
+};
 const redirectTomeAtmMenu = () => {
   redirect("/atm/atm-menu.html");
 };
