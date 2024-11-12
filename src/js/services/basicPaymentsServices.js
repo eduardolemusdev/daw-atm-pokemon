@@ -1,3 +1,7 @@
+import { PdfService } from "./pdfService";
+
+const currentUser = checkAuthUser();
+
 const redirectAtmMenuBtn = $("#redirectAtmMenuBtn");
 
 redirectAtmMenuBtn.addEventListener("click", () => redirectTomeAtmMenu());
@@ -42,17 +46,45 @@ const generateTitleServicePayment = () => {
 paymentsTitle.textContent = generateTitleServicePayment();
 
 const paymentServiceConfirmButton = $("#paymentServiceConfirmButton");
-
+$("#npeInput").addEventListener("input", (e) => {
+  const inputValue = e.target.value;
+  if (inputValue.length === 5 && e.inputType !== "deleteContentBackward") {
+    e.target.value = e.target.value + "-";
+  }
+  if (inputValue.length === 9 && e.inputType !== "deleteContentBackward") {
+    e.target.value = e.target.value + "-";
+  }
+  if (inputValue.length === 14 && e.inputType !== "deleteContentBackward") {
+    e.target.value = e.target.value + "-";
+  }
+});
 paymentServiceConfirmButton.addEventListener("click", () => {
-  Swal.fire({
-    title: "Desea confirmar la transacción?",
-    showDenyButton: true,
-    confirmButtonText: "Confirmar",
-    denyButtonText: `Cancelar`,
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      Swal.fire("Transacción efectuada!", "", "success");
-    }
-  });
+  try {
+    const npeValue = $("#npeInput").value;
+
+    const atm = new ATM();
+    const { npe, amount, id, date, transactionType } = atm.npePayment(npeValue);
+
+    Swal.fire({
+      title: "Desea confirmar la transacción?",
+      showDenyButton: true,
+      confirmButtonText: "Confirmar",
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        const pdfService = new PdfService();
+        pdfService.npeTransaction(npe, amount, id, date, transactionType);
+        Swal.fire("Transacción efectuada!", "", "success");
+      }
+    });
+  } catch (error) {
+    console.log(error);
+
+    Swal.fire({
+      title: error.message,
+      confirmButtonText: "OK",
+      icon: "error",
+    });
+  }
 });

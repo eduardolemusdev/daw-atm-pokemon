@@ -7,9 +7,14 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="/js/utils.js"></script>
+    <script src="/js/Currency.js"></script>
     <script src="/js/ATM.js"></script>
 
-    <script src="/js/services/basicPaymentsServices.js" defer></script>
+    <script
+      src="/js/services/basicPaymentsServices.js"
+      type="module"
+      defer
+    ></script>
     <link rel="stylesheet" href="/css/mintailwind.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="shortcut icon" href="/imgs/atm-icon.ico" type="image/x-icon" />
@@ -44,6 +49,8 @@
             type="text"
             class="p-4 rounded-lg"
             placeholder="00000-000-00000-00000"
+            id="npeInput"
+            maxlength="21"
           />
         </div>
         <div class="text-7xl pt-8">

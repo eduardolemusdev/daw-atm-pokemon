@@ -39,5 +39,3 @@ const addZeros = balanceDollars.getAmountInDollars() % 1 === 0 ? ".00" : "";
 $(
   "#balanceAmount"
 ).textContent = `Balance: $${balanceDollars.getAmountInDollars()}${addZeros}`;
-
-console.log(currentUser);
